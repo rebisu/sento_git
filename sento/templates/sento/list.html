@@ -1,0 +1,33 @@
+{% extends 'sento/base.html' %}
+
+{% block content %}
+<h3>銭湯一覧</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>外観</th>
+            <th>銭湯名</th>
+            <th>行った人</th>
+            <th>日付</th>
+            <th>評価</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in sentodata %}
+        <tr>
+            <th><a href="{% url 'sento:update' data.pk %}">更新</a></th>
+            <th>外観</th>
+            <th>{{data.sento_name}}</th>
+            <th>{{data.author}}</th>
+            <th>{{data.r_date}}</th>
+            <th>評価</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block extrajs %}
+
+{% endblock %}

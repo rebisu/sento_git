@@ -1,0 +1,57 @@
+{% extends 'sento/base.html' %}
+
+{% block content %}
+<h3>銭湯登録</h3>
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+            <th>{{form.r_date.label}}</th>
+            <td>{{form.r_date}}</td>
+        </tr>
+        <tr>
+            <th>{{form.author.label}}</th>
+            <td>{{form.author}}</td>
+        </tr>
+        <tr>
+            <th>{{form.sento_name.label}}</th>
+            <td>{{form.sento_name}}</td>
+        </tr>
+        <tr>
+            <th>{{form.sauna.label}}</th>
+            <td>{{form.sauna}}</td>
+        </tr>
+        <tr>
+            <th>{{form.outdoor_bath.label}}</th>
+            <td>{{form.outdoor_bath}}</td>
+        </tr>
+        <tr>
+            <th>{{form.basic_charge.label}}</th>
+            <td>{{form.basic_charge}}</td>
+        </tr>
+        <tr>
+            <th>{{form.station.label}}</th>
+            <td>{{form.station}}</td>
+        </tr>
+        <tr>
+            <th>{{form.text.label}}</th>
+            <td>{{form.text}}</td>
+        </tr>
+    </table>
+    <button type="submit">登録</button>
+    {% csrf_token %}
+</form>
+{% endblock %}
+
+{% block extrajs %}
+<script>
+    $(function () {
+        // 日付は、年-月-日 の形式でお願いする。
+        let dateFormat = 'yy-mm-dd';
+        $('#id_r_date').datepicker({
+            dateFormat : dateFormat
+        });
+        //リロード時、今日の日付を初期値に設定
+        $('#id_r_date').datepicker().datepicker('setDate', 'today');
+    });
+</script>
+{% endblock %}
