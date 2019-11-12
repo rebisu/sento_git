@@ -1,7 +1,9 @@
 {% extends 'sento/base.html' %}
 
 {% block content %}
-<h3>銭湯登録</h3>
+<h3 id="circle">銭湯登録</h3>
+<div class="title">銭湯登録画面の説明</div>
+<p>これは銭湯登録画面です。行った銭湯を登録しましょう。</p>
 <form action="" method="POST">
     <table class="table">
         <tr>
@@ -45,6 +47,10 @@
 {% block extrajs %}
 <script>
     $(function () {
+        $("#circle").animate({
+            "marginLeft":"700px"
+        })
+
         // 日付は、年-月-日 の形式でお願いする。
         let dateFormat = 'yy-mm-dd';
         $('#id_r_date').datepicker({
@@ -52,6 +58,26 @@
         });
         //リロード時、今日の日付を初期値に設定
         $('#id_r_date').datepicker().datepicker('setDate', 'today');
+        //クリックイベント
+        $(".title").on("click",function(){
+            $("p").show("slow");
+        })
+
     });
 </script>
+<style type="text/css">
+    .title{
+        width:500px;
+        height:25px;
+        background-color: brown;
+        color:white;
+    }
+    p{
+        display:none;
+        width: 500px;
+        height:100px;
+        margin-top: 7px;
+        background-color:aqua;
+    }
+</style>
 {% endblock %}
